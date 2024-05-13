@@ -6,6 +6,7 @@ This repository contains implementation results for the  capability testing of N
 
 Table of Contents
 =================
+
     * [ALiCT](#alict-automated-linguistic-capability-test)
     * [Prerequisites](#prerequisites)
     * [Usage](#usage)
