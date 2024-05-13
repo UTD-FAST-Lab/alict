@@ -1,4 +1,4 @@
-# ALiCT
+# ALiCT: Automated Linguistic Capability Test
 
 This repository contains implementation results for the  capability testing of NLP Models as described in the following paper:
 
@@ -7,17 +7,18 @@ This repository contains implementation results for the  capability testing of N
 Table of Contents
 =================
 
-    * [ALiCT](#alict-automated-linguistic-capability-test)
-    * [Prerequisites](#prerequisites)
-    * [Usage](#usage)
-        * [1. Seed and Expanded Test Case Identification](#1-seed-and-expanded-test-case-identification)
-        * [2. Testsuite Generation](#2-testsuite-generation)
-        * [3. Run Model on The Generated Testsuites](#3-run-model-on-the-generated-testsuites)
-        * [4. Analyze The Testing Results](#4-analyze-the-testing-results)
-    * [Results](#results)
+   * [ALiCT](#alict-automated-linguistic-capability-test)
+      * [ALiCT](#alict)
+      * [Prerequisites](#prerequisites)
+      * [Usage](#usage)
+      * [1. Seed and Expanded Test Case Identification](#1-seed-and-expanded-test-case-identification)
+      * [2. Testsuite Generation](#2-testsuite-generation)
+      * [3. Run Model on The Generated Testsuites](#3-run-model-on-the-generated-testsuites)
+      * [4. Analyze The Testing Results](#4-analyze-the-testing-results)
+      * [Results](#results)
 
 
-# ALiCT: Automated Linguistic Capability Test
+# ALiCT
 
 ALiCT is an automated linguistic capability-based testing framework for NLP models. In this implementation, we generate testcases for sentiment analysis and hate speech detection. 
 ALiCT generates seed test cases using [SST](https://nlp.stanford.edu/sentiment/) and [HateXplain](https://github.com/hate-alert/HateXplain) datasets as the labeled search dataset for the sentiment analysis and hate speech detection respectively.
