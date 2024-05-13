@@ -1,0 +1,223 @@
+[
+    {
+        'lc': 'Slur usage::Hate expressed using slur',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_slur>']
+                    },
+                    'label': 'toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Slur usage::Non-Hateful use of slur',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_slur>']
+                    },
+                    'label': 'non-toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Profanity usage::Hate expressed using profanity',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<profanity>']
+                    },
+                    'label': 'toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Profanity usage::Non-Hateful use of profanity',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<profanity>']
+                    },
+                    'label': 'non-toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Pronoun reference::Hate expressed through reference in subsequent clauses',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_ph>']
+                    },
+                    'label': 'toxic'
+                }, {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_ph>']
+                    },
+                    'label': 'non-toxic'
+                }
+            ],
+            "transform": [
+                '[people say, I heard that]+{toxic_sent}+[and]+[I hate them too, I also hate them]',
+                '[people say, I heard that]+{non_toxic_sent}+[but]+[I hate them]'
+                '[people say, I heard that]+{toxic_sent}+[but]+[I don\'t hate them, I like them]',
+                '[people say, I heard that]+{non_toxic_sent}+[and]+[I also don\'t hate them, I don\'t hate them too]'
+            ]
+        }
+    }, {
+        'lc': 'Pronoun reference::Hate expressed through reference in subsequent sentences',
+        'spec': {
+            'search': [
+                {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_ph>']
+                    },
+                    'label': 'toxic'
+                }, {
+                    'length': None,
+                    'include': {
+                        'POS': None,
+                        'word': ['<hatecheck_ph>']
+                    },
+                    'label': 'non-toxic'
+                }
+            ],
+            "transform": [
+                '[people say, I heard that]+{toxic_sent}+[. I hate them too, I also hate them]',
+                '[people say, I heard that]+{non_toxic_sent}+[. I hate them, I hate them]'
+                '[people say, I heard that]+{toxic_sent}+[. I don\'t hate them, I like them]',
+                '[people say, I heard that]+{non_toxic_sent}+[. I also don\'t hate them, I don\'t hate them too]'
+            ]
+        }
+    }, {
+        'lc': 'Negation::Hate expressed using negated positive statement',
+        'spec': {
+            'search': [
+                {
+                    'label': 'non-toxic'
+                }
+            ],
+            "transform": [
+                '[I do not think that]+{non_toxic_sent}',
+                '[I do not agree with that]+{non_toxic_sent}'
+            ]
+        }
+    }, {
+        'lc': 'Negation::Non-hate expressed using negated hateful statement',
+        'spec': {
+            'search': [
+                {
+                    'label': 'toxic'
+                }
+            ],
+            "transform": [
+                '[I do not think that]+{toxic_sent}',
+                '[I do not agree with that]+{toxic_sent}'
+            ]
+        }
+    }, {
+        'lc': 'Phrasing::Hate phrased as a question',
+        'spec': {
+            'search': [
+                {
+                    'label': 'toxic'
+                }
+            ],
+            "transform": [
+                '[Why do you agree with that]+{toxic_sent}+[?]',
+                '[Why do you like to say that]+{toxic_sent}+[?]'
+            ]
+        }
+    }, {
+        'lc': 'Phrasing::Hate phrased as a opinion',
+        'spec': {
+            'search': [
+                {
+                    'label': 'toxic'
+                }
+            ],
+            "transform": [
+                '[I think that]+{toxic_sent}',
+                '[I believe that]+{toxic_sent}'
+            ]
+        }
+    }, {
+        'lc': 'Non-hate grp. ident.::Neutral statements using protected group identifiers',
+        'spec': {
+            "search": [
+                {
+                    "include": {
+                        "word": ['<hatecheck_ph>']
+                    },
+                    "exclude": {
+                        "POS": ["positive adjs", "negative adjs", "positive nouns", "negative nouns", "positive verbs", "negative verbs"],
+                        "word": None
+                    },
+                    'label': 'non-toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Non-hate grp. ident.::Positive statements using protected group identifiers',
+        'spec': {
+            "search": [
+                {
+                    "include": {
+                        "word": ['<hatecheck_ph>']
+                    },
+                    "exclude": {
+                        "POS": ["negative adjs", "negative nouns", "negative verbs"]
+                    },
+                    'label': 'non-toxic'
+                }
+            ]
+        }
+    }, {
+        'lc': 'Counter speech::Denouncements of hate that quote it',
+        'spec': {
+            'search': [
+                {
+                    'label': 'toxic'
+                }
+            ],
+            'transform': [
+                '[statements like \"]+{toxic_sent}+[\" are <hurtful_syn>]',
+                '[you should stop saying like \"]+{toxic_sent}+[\"]'
+            ]
+        }
+    }, {
+        'lc': 'Counter speech::Denouncements of hate that make direct reference to it',
+        'spec': {
+            'search': [
+                {
+                    'label': 'toxic'
+                }
+            ],
+            'transform': [
+                '[Saying that]+{toxic_sent}+[shows how misguided you are]',
+                '[I cannot believe that]+{toxic_sent}'
+            ]
+        }
+    }
+]
+            
