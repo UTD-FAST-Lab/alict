@@ -187,6 +187,10 @@ _results/
 |  |- test_result_analysis.json
 ```
 
+## 4. Analyze The Testing Results
+This step is to run the aforementioned steps for the LC of fairness for the sentiment analysis task.
+
+
 Results
 =================
 
