@@ -15,6 +15,8 @@ Table of Contents
          * [2. Testsuite Generation](#2-testsuite-generation)
          * [3. Run Model on The Generated Testsuites](#3-run-model-on-the-generated-testsuites)
          * [4. Analyze The Testing Results](#4-analyze-the-testing-results)
+         * [5. Linguistic Capability of Fairness for Sentiment Analysis Task](#5-linguistic-capability-of-fairness-for-sentiment-analysis-task)
+         * [6. Evaluation of LLM using ALiCT test cases](#6-evaluation-of-llm-using-alict-test-cases)
       * [Artifact](#artifact)
 
 # ALiCT
@@ -162,7 +164,7 @@ _results/
 |  |- test_result_analysis.json
 ```
 
-## 4. Linguistic Capability of Fairness for Sentiment Analysis Task
+## 5. Linguistic Capability of Fairness for Sentiment Analysis Task
 This step is to run the aforementioned steps for the LC of fairness for the sentiment analysis task.
 ```bash
 # 1. Seed and Expanded Test Case Identification
@@ -213,7 +215,7 @@ _results/
 |  |- test_result_fairness_analysis.json
 ```
 
-## 5. Evaluation of LLM using ALiCT test cases
+## 6. Evaluation of LLM using ALiCT test cases
 This step is to run the aforementioned steps for evaluating Large Language Model (LLM), GPT3.5 model in this implementation, over LCs.
 ```bash
 # Sentiment analysis
